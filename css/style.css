@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    position: absolute;
+}
+
+.active {
+    background-color: red;
+}
+
+img {
+    height: 50%;
+    position: absolute;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+#left {
+    left: 0;
+}
+
+#right {
+
+}
+.static {
+    left: 100%;
+    transform: translateX(-100%);
+}
