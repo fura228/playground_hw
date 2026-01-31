@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('main-menu').classList.remove('hidden');
             document.getElementById('bar-scene').classList.add('hidden');
             document.getElementById('door-scene').classList.add('hidden');
+            
+            const doorImg = document.getElementById('door-img');
+            if (doorImg.src.includes('after.jpeg')) {
+                doorImg.src = 'assets/door-background.jpg';
+            }
         });
     });
     
@@ -58,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('door-handles').addEventListener('click', function() {
         const handles = this;
         const character = document.getElementById('door-character');
+        const doorImg = document.getElementById('door-img');
         
         if (handles.classList.contains('door-open')) return;
         
@@ -77,6 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 character.classList.add('enter-door');
             }, 500);
         }, 1500);
+        
+        setTimeout(() => {
+            if (doorImg && doorImg.src.includes('door-background.jpg')) {
+                doorImg.src = 'assets/after.jpeg';
+            }
+        }, 1000);
         
         setTimeout(() => {
             handles.classList.remove('door-open');
