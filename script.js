@@ -41,18 +41,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 try {
                     new Audio('assets/five-bottles.mp3').play();
                 } catch(e) {}
-            }, 500);
+            }, 1500);
         }
         
         setTimeout(() => {
+            character.classList.remove('drink-animation');
             bottle.classList.remove('bottle-open');
-            bottle.style.opacity = '0';
+            bottle.classList.add('bottle-return');
             
             setTimeout(() => {
-                bottle.style.opacity = '1';
-                character.classList.remove('drink-animation');
-            }, 1000);
-        }, 1000);
+                bottle.classList.remove('bottle-return');
+            }, 500);
+        }, 2000);
     });
     
     document.getElementById('door-handles').addEventListener('click', function() {
