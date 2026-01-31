@@ -12,7 +12,6 @@ body {
     overflow: hidden;
 }
 
-
 #main-menu {
     position: fixed;
     width: 100%;
@@ -22,12 +21,10 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 100;
-    transition: opacity 0.3s;
 }
 
-#main-menu.hidden {
-    opacity: 0;
-    pointer-events: none;
+.hidden {
+    display: none !important;
 }
 
 .menu {
@@ -72,17 +69,12 @@ body {
     font-size: 1.2rem;
 }
 
-
-.scene {
+#bar-scene, #door-scene {
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-}
-
-.scene.hidden {
-    display: none;
 }
 
 .exit-btn {
@@ -110,11 +102,9 @@ body {
     overflow: hidden;
 }
 
-
 #bar-scene .scene-content {
     background: #1e293b;
 }
-
 
 #door-scene .scene-content {
     background: #374151;
@@ -132,7 +122,6 @@ body {
     object-fit: cover;
 }
 
-
 .interactive {
     position: absolute;
     cursor: pointer;
@@ -144,14 +133,12 @@ body {
     transform: scale(1.1);
 }
 
-
 #chester-bottle {
     bottom: 50px;
     right: 50px;
     font-size: 4rem;
     filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
-
 
 #door-handles {
     top: 50%;
@@ -173,7 +160,6 @@ body {
     background: #fbbf24;
     border-radius: 10px;
 }
-
 
 .character {
     position: absolute;

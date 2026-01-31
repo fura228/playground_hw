@@ -1,4 +1,3 @@
-// Конфигурация путей
 const CONFIG = {
     images: {
         bar: 'assets/images/bar-background.jpg',
@@ -11,22 +10,27 @@ const CONFIG = {
     }
 };
 
-
-const mainMenu = document.getElementById('main-menu');
-const barScene = document.getElementById('bar-scene');
-const doorScene = document.getElementById('door-scene');
-const exitBtns = document.querySelectorAll('.exit-btn');
-
 function init() {
-
     loadImage('bar-img', CONFIG.images.bar);
     loadImage('door-img', CONFIG.images.door);
     loadImage('char-img', CONFIG.images.character);
-    document.getElementById('choice-bar').addEventListener('click', () => showScene('bar'));
-    document.getElementById('choice-door').addEventListener('click', () => showScene('door'));
     
-    exitBtns.forEach(btn => {
-        btn.addEventListener('click', showMenu);
+    document.getElementById('choice-bar').addEventListener('click', function() {
+        document.getElementById('main-menu').classList.add('hidden');
+        document.getElementById('bar-scene').classList.remove('hidden');
+    });
+    
+    document.getElementById('choice-door').addEventListener('click', function() {
+        document.getElementById('main-menu').classList.add('hidden');
+        document.getElementById('door-scene').classList.remove('hidden');
+    });
+    
+    document.querySelectorAll('.exit-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.getElementById('main-menu').classList.remove('hidden');
+            document.getElementById('bar-scene').classList.add('hidden');
+            document.getElementById('door-scene').classList.add('hidden');
+        });
     });
     
     document.getElementById('chester-bottle').addEventListener('click', openBottle);
@@ -37,28 +41,8 @@ function loadImage(id, path) {
     const img = document.getElementById(id);
     if (img && path) {
         img.src = path;
-        img.onerror = () => console.log(`Не загружено: ${path}`);
     }
 }
-
-function showMenu() {
-    mainMenu.classList.remove('hidden');
-    barScene.classList.add('hidden');
-    doorScene.classList.add('hidden');
-}
-
-function showScene(scene) {
-    mainMenu.classList.add('hidden');
-    
-    if (scene === 'bar') {
-        barScene.classList.remove('hidden');
-        doorScene.classList.add('hidden');
-    } else {
-        doorScene.classList.remove('hidden');
-        barScene.classList.add('hidden');
-    }
-}
-
 
 function openBottle() {
     const bottle = document.getElementById('chester-bottle');
@@ -71,9 +55,7 @@ function openBottle() {
         bottle.classList.remove('bottle-open');
         bottle.style.display = 'none';
         
-
         const barImg = document.getElementById('bar-img');
-        const originalSrc = barImg.src;
         barImg.style.filter = 'brightness(1.2) saturate(1.5)';
         
         setTimeout(() => {
@@ -82,7 +64,6 @@ function openBottle() {
         }, 2000);
     }, 1000);
 }
-
 
 function openDoor() {
     const handles = document.getElementById('door-handles');
@@ -107,17 +88,13 @@ function openDoor() {
     }, 4000);
 }
 
-
 function playSound(path) {
     try {
         if (path) {
             const audio = new Audio(path);
-            audio.play().catch(e => console.log('Звук не воспроизведен'));
+            audio.play();
         }
-    } catch (e) {
-        console.log('Ошибка звука:', e);
-    }
+    } catch (e) {}
 }
-
 
 document.addEventListener('DOMContentLoaded', init);
