@@ -25,9 +25,14 @@
     
     <div id="bar-scene" class="hidden">
         <button class="exit-btn">← Выйти</button>
+        <div class="counter">Выпито: <span id="bottle-counter">0</span></div>
         <div class="scene-content">
             <div class="bg-img">
-                <img id="bar-img" src="" alt="">
+                <img id="bar-img" src="assets/bar-background.jpg" alt="" onerror="this.style.display='none'">
+                <div id="bar-placeholder">Загружаем фото бара...</div>
+            </div>
+            <div id="bar-character" class="character">
+                <img id="bar-char-img" src="assets/character.png" alt="" onerror="this.style.display='none'">
             </div>
             <div id="chester-bottle" class="interactive">🍾</div>
         </div>
@@ -37,18 +42,19 @@
         <button class="exit-btn">← Выйти</button>
         <div class="scene-content">
             <div class="bg-img">
-                <img id="door-img" src="" alt="">
+                <img id="door-img" src="assets/door-background.jpg" alt="" onerror="this.style.display='none'">
+                <div id="door-placeholder">Загружаем фото двери...</div>
             </div>
             <div id="door-handles" class="interactive">
                 <div class="handle"></div>
                 <div class="handle"></div>
             </div>
             <div id="door-character" class="character hidden">
-                <img id="char-img" src="" alt="">
+                <img id="door-char-img" src="assets/character.png" alt="" onerror="this.style.display='none'">
             </div>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

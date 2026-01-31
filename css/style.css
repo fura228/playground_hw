@@ -95,6 +95,23 @@ body {
     background: #2563eb;
 }
 
+.counter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 5px;
+    z-index: 10;
+    font-size: 1.2rem;
+}
+
+#bottle-counter {
+    color: #fbbf24;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
 .scene-content {
     width: 100%;
     height: 100%;
@@ -187,6 +204,17 @@ body {
     100% { transform: scale(0) rotate(-45deg); opacity: 0; }
 }
 
+.drink-animation {
+    animation: drink 2s forwards;
+}
+
+@keyframes drink {
+    0% { transform: translateX(-50%) scale(1); }
+    30% { transform: translateX(-50%) translateY(-30px) scale(1.1); }
+    50% { transform: translateX(-50%) translateY(-30px) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
 .door-open {
     animation: openDoor 1.5s forwards;
 }
@@ -204,4 +232,40 @@ body {
     0% { transform: translateX(-50%); }
     50% { transform: translateX(0) scale(0.9); opacity: 1; }
     100% { transform: translateX(-100%) scale(0.8); opacity: 0; }
+}
+
+#bar-placeholder, #door-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #94a3b8;
+    font-size: 1.2rem;
+}
+
+.bg-img img[style*="display: none"] + #bar-placeholder,
+.bg-img img[style*="display: none"] + #door-placeholder {
+    display: block;
+}
+
+#bar-placeholder, #door-placeholder {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .choices {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #chester-bottle {
+        font-size: 3rem;
+        bottom: 30px;
+        right: 30px;
+    }
+    
+    #door-handles {
+        width: 100px;
+        height: 50px;
+    }
 }
